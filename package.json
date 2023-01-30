@@ -1,6 +1,6 @@
 {
-  "name": "bibliotheca",
-  "version": "1.0.0",
+  "name": "@studio-freight/react-lenis",
+  "version": "0.0.1",
   "description": "",
   "files": [
     "dist/**/*",
@@ -8,13 +8,13 @@
   ],
   "sideEffects": false,
   "source": "src/index.js",
-  "main": "dist/index.js",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/react-lenis.js",
+  "umd:main": "dist/react-lenis.umd.js",
+  "module": "dist/react-lenis.mjs",
+  "types": "dist/types/react-lenis.d.ts",
   "exports": {
-    "require": "./dist/index.js",
-    "default": "./dist/index.modern.mjs"
+    "require": "./dist/react-lenis.js",
+    "default": "./dist/react-lenis.modern.mjs"
   },
   "scripts": {
     "dev": "vite",
@@ -33,15 +33,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/studio-freight/bibliotheca.git"
+    "url": "git+https://github.com/studio-freight/react-lenis.git"
   },
   "keywords": [],
   "author": "@studio-freight",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/studio-freight/bibliotheca/issues"
+    "url": "https://github.com/studio-freight/react-lenis/issues"
   },
-  "homepage": "https://github.com/studio-freight/bibliotheca#readme",
+  "homepage": "https://github.com/studio-freight/react-lenis#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.2",
     "eslint": "^8.33.0",
@@ -54,6 +54,8 @@
     "microbundle": "^0.15.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^4.9.4",
     "vite": "^4.0.4"
   },
@@ -66,5 +68,17 @@
       "limit": "2 kB",
       "path": "dist/index.mjs"
     }
-  ]
+  ],
+  "dependencies": {
+    "@studio-freight/hamo": "^0.6.10",
+    "@studio-freight/lenis": "^0.2.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "@studio-freight/hamo": "^0.6.10",
+    "@studio-freight/lenis": "^0.2.28",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

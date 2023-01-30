@@ -2,6 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@size-limit/preset-small-lib': ^8.1.2
+  '@studio-freight/hamo': ^0.6.10
+  '@studio-freight/lenis': ^0.2.28
   eslint: ^8.33.0
   eslint-config-prettier: ^8.6.0
   eslint-config-standard: ^17.0.0
@@ -12,8 +14,14 @@ specifiers:
   microbundle: ^0.15.1
   npm-run-all: ^4.1.5
   prettier: ^2.8.3
+  react: ^18.2.0
+  react-dom: ^18.2.0
   typescript: ^4.9.4
   vite: ^4.0.4
+
+dependencies:
+  '@studio-freight/hamo': 0.6.10_biqbaboplfbrettd7655fr4n2y
+  '@studio-freight/lenis': 0.2.28
 
 devDependencies:
   '@size-limit/preset-small-lib': 8.1.2_size-limit@8.1.2
@@ -27,6 +35,8 @@ devDependencies:
   microbundle: 0.15.1
   npm-run-all: 4.1.5
   prettier: 2.8.3
+  react: 18.2.0
+  react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.4
   vite: 4.0.4
 
@@ -1922,6 +1932,31 @@ packages:
       size-limit: 8.1.2
     dev: true
 
+  /@studio-freight/hamo/0.6.10_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-x6oo7rdmPpGe8HbmjX+4SbSry29UC4XlAjGYDpfXX8jF36WFYYboAVImSHr4QJiSnKHq8X48yw1QmIWXQzdriQ==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@studio-freight/tempus': 0.0.34
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      throttle-debounce: 5.0.0
+    dev: false
+
+  /@studio-freight/lenis/0.2.28:
+    resolution: {integrity: sha512-obxWf3ZNtnLg9Rd2WPgkzq36N2NEmiwvdlNXlHIrrjCGltZp4+NtIQmXsF9/XtsJEhQ4Gd4u90zALRDgsr5W/g==}
+    dependencies:
+      tiny-emitter: 2.1.0
+      virtual-scroll: 2.2.1
+    dev: false
+
+  /@studio-freight/tempus/0.0.34:
+    resolution: {integrity: sha512-wf5oflAg3uJ0CFY9ryeO6k8e8HTTwv7Ld6BusRnveL/GdQ9YjxI/H/USN7Vh2G2UQXjx+SGIlimqnI9QH2j2uA==}
+    dependencies:
+      nanoid: 4.0.0
+    dev: false
+
   /@surma/rollup-plugin-off-main-thread/2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
@@ -3641,7 +3676,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-    dev: true
 
   /js-yaml/4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -3782,7 +3816,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: true
 
   /lru-cache/5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -3929,6 +3962,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /nanoid/4.0.0:
+    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /nanospinner/1.1.0:
     resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
@@ -4658,9 +4697,24 @@ packages:
       safe-buffer: 5.1.2
     dev: true
 
+  /react-dom/18.2.0_react@18.2.0:
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.2.0
+      scheduler: 0.23.0
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
+
+  /react/18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
 
   /read-pkg/3.0.0:
     resolution: {integrity: sha512-BLq/cCO9two+lBgiTYNqD6GdtK8s4NpaWrl6/rCO9w0TUS8oJl7cmToOZfRYllKTISY6nt1U7jQ53brmKqY6BA==}
@@ -4907,6 +4961,11 @@ packages:
       get-intrinsic: 1.2.0
       is-regex: 1.1.4
     dev: true
+
+  /scheduler/0.23.0:
+    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+    dependencies:
+      loose-envify: 1.4.0
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
@@ -5183,6 +5242,15 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
+  /throttle-debounce/5.0.0:
+    resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
+    engines: {node: '>=12.22'}
+    dev: false
+
+  /tiny-emitter/2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+    dev: false
+
   /tiny-glob/0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
     dependencies:
@@ -5305,6 +5373,12 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
     dev: true
+
+  /virtual-scroll/2.2.1:
+    resolution: {integrity: sha512-RvjcLxluh7B/6GPzLgQ9d0NYG4yqEguTc3MU7AvxyPVltuo2Cq5RokTL9RKUaZCMJ64in2hus0d03gTtoHp55g==}
+    dependencies:
+      tiny-emitter: 2.1.0
+    dev: false
 
   /vite/4.0.4:
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}

@@ -1,3 +1,1 @@
-export function hello(name) {
-  return `Hello ${name}!`
-}
+export { ReactLenis, useLenis, useScroll } from './lenis'

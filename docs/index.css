@@ -9,3 +9,7 @@ body {
 .main {
   padding: 5vw;
 }
+
+p {
+  font-size: 10rem;
+}
