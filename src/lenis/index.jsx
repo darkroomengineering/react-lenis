@@ -10,10 +10,7 @@ export function useScroll(callback, root = false) {
   useEffect(() => {
     if (!lenis) return
 
-    console.log('subscribing scroll event')
     const unsubscribe = lenis.on('scroll', callback)
-
-    console.log('Emitting scroll event')
     lenis.emit()
 
     return unsubscribe
