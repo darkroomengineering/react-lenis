@@ -1,15 +1,8 @@
+import { useFrame } from '@studio-freight/hamo'
 import Lenis from '@studio-freight/lenis'
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
 
 let rootLenisInstance
-
-const LenisContext = createContext()
-
-export function useLenis() {
-  const lenis = useContext(LenisContext)
-
-  return lenis ?? rootLenisInstance
-}
 
 export function useScroll(callback, root = false) {
   const lenis = useLenis(root)
@@ -17,13 +10,23 @@ export function useScroll(callback, root = false) {
   useEffect(() => {
     if (!lenis) return
 
+    console.log('subscribing scroll event')
     const unsubscribe = lenis.on('scroll', callback)
 
+    console.log('Emitting scroll event')
     lenis.emit()
 
-    return () => unsubscribe()
+    return unsubscribe
   }, [lenis, callback])
 }
+
+export function useLenis(root = false) {
+  const lenis = useContext(LenisContext)
+
+  return root ? rootLenisInstance : lenis ?? rootLenisInstance
+}
+
+const LenisContext = createContext()
 
 export function ReactLenis({ children, root, ...options }) {
   const wrapper = useRef()
@@ -32,8 +35,10 @@ export function ReactLenis({ children, root, ...options }) {
   const [lenis, setLenis] = useState()
 
   useEffect(() => {
-    options.wrapper = wrapper.current
-    options.content = content.current
+    if (!root) {
+      options.wrapper = wrapper.current
+      options.content = content.current
+    }
 
     const lenis = new Lenis({
       ...options,
@@ -44,6 +49,10 @@ export function ReactLenis({ children, root, ...options }) {
     if (root) {
       rootLenisInstance = lenis
     }
+  }, [root])
+
+  useFrame((time) => {
+    lenis.raf(time)
   }, [])
 
   return (
