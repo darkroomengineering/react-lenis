@@ -1,5 +1,6 @@
 import { useFrame } from '@studio-freight/hamo'
 import Lenis from '@studio-freight/lenis'
+import PropTypes from 'prop-types' // ES6
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
 
 let rootLenisInstance
@@ -13,7 +14,7 @@ export function useScroll(callback, root = false) {
     const unsubscribe = lenis.on('scroll', callback)
     lenis.emit()
 
-    return unsubscribe
+    return () => unsubscribe()
   }, [lenis, callback])
 }
 
@@ -46,7 +47,7 @@ export function ReactLenis({ children, root, ...options }) {
     if (root) {
       rootLenisInstance = lenis
     }
-  }, [root])
+  }, [root, options])
 
   useFrame((time) => {
     lenis.raf(time)
@@ -63,4 +64,10 @@ export function ReactLenis({ children, root, ...options }) {
       )}
     </LenisContext.Provider>
   )
+}
+
+ReactLenis.propTypes = {
+  children: PropTypes.node,
+  root: PropTypes.bool,
+  options: PropTypes.object,
 }

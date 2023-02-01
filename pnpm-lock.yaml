@@ -11,9 +11,11 @@ specifiers:
   eslint-plugin-n: ^15.6.1
   eslint-plugin-promise: ^6.1.1
   eslint-plugin-react: ^7.32.2
+  eslint-plugin-react-hooks: ^4.6.0
   microbundle: ^0.15.1
   npm-run-all: ^4.1.5
   prettier: ^2.8.3
+  prop-types: ^15.8.1
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^4.9.4
@@ -34,9 +36,11 @@ devDependencies:
   eslint-plugin-n: 15.6.1_eslint@8.33.0
   eslint-plugin-promise: 6.1.1_eslint@8.33.0
   eslint-plugin-react: 7.32.2_eslint@8.33.0
+  eslint-plugin-react-hooks: 4.6.0_eslint@8.33.0
   microbundle: 0.15.1
   npm-run-all: 4.1.5
   prettier: 2.8.3
+  prop-types: 15.8.1
   typescript: 4.9.4
   vite: 4.0.4
 
@@ -2917,6 +2921,15 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.33.0
+    dev: true
+
+  /eslint-plugin-react-hooks/4.6.0_eslint@8.33.0:
+    resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
     dependencies:
       eslint: 8.33.0
     dev: true

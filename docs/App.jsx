@@ -27,6 +27,7 @@ function ScrollListener() {
 function App() {
   return (
     <ReactLenis root>
+      <ScrollListener />
       <ScrollableContent />
     </ReactLenis>
   )

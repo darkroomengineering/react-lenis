@@ -4,12 +4,10 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['standard', 'prettier'],
-  parser: '@typescript-eslint/parser',
+  extends: ['standard', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
   },
-  plugins: ['@typescript-eslint'],
   rules: {
     'space-before-function-paren': 'off',
     'comma-dangle': ['error', 'always-multiline'],
