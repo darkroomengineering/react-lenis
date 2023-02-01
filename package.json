@@ -11,7 +11,7 @@
   "main": "dist/react-lenis.js",
   "umd:main": "dist/react-lenis.umd.js",
   "module": "dist/react-lenis.mjs",
-  "types": "dist/types/react-lenis.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     "require": "./dist/react-lenis.js",
     "default": "./dist/react-lenis.modern.mjs"
