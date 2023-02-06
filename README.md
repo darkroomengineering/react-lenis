@@ -46,16 +46,12 @@ The `options` object is passed directly to the Lenis instance, check [their read
 ## Extras
 Once the Lenis context is set (components mounted inside `<ReactLenis>`) you can use these handy hooks:
 
-`useScroll` is a hook that listens to scroll events from the Lenis instance.
+`useLenis` is a hook that returns the Lenis instance
 
-The hook takes two arguments:
+The hook takes three argument:
 - callback: The function to be called whenever a scroll event is emitted
-- root (optional): If root is set to true, it returns the root Lenis instance instead of the one within the context.
-
-`useLenis` is a hook that returns the Lenis instance, either from the context or the root instance, depending on the value of root.
-
-The hook takes one argument:
-- root (optional): If root is set to true, it returns the root Lenis instance instead of the one within the context.
+- deps array: Trigger callback on change
+- priority: Manage callback execution order
 
 
 <br/>
