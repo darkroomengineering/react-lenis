@@ -24,12 +24,9 @@
     "prepublishOnly": "npm version patch",
     "postpublish": "git push --follow-tags",
     "preversion": "npm run build",
-    "build": "npm-run-all --parallel clean build:dist build:bundle build:types",
+    "build": "npm-run-all --parallel clean build:dist build:types",
     "build:types": "tsc --target esnext --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./src/index.jsx",
-    "build:dist": "microbundle build -i src/index.jsx --o ./dist",
-    "build:bundle": "npm-run-all build:bundle-full build:bundle-min",
-    "build:bundle-full": "microbundle build -i src/index.jsx --o ./bundled/index.js --no-sourcemap --no-pkg-main --name $npm_package_name --format umd  --no-compress",
-    "build:bundle-min": "microbundle build -i src/index.jsx --o ./bundled/index.min.js --no-sourcemap --no-pkg-main --name $npm_package_name --format umd"
+    "build:dist": "microbundle build -i src/index.jsx --o ./dist --jsx React.createElement"
   },
   "repository": {
     "type": "git",
@@ -44,6 +41,8 @@
   "homepage": "https://github.com/studio-freight/react-lenis#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.2",
+    "@studio-freight/hamo": "0.6.12",
+    "@studio-freight/lenis": "1.0.0-dev.7",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",
@@ -58,8 +57,10 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^4.1.2",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.1",
+    "zustand": "^4.3.2"
   },
   "size-limit": [
     {
@@ -72,16 +73,12 @@
     }
   ],
   "dependencies": {
-    "@studio-freight/hamo": "^0.6.12",
-    "@studio-freight/lenis": "^0.2.28",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^4.1.2",
+    "@studio-freight/hamo": "0.6.12",
+    "@studio-freight/lenis": "1.0.0-dev.7",
+    "prop-types": "^15.8.1",
     "zustand": "^4.3.2"
   },
   "peerDependencies": {
-    "@studio-freight/hamo": "^0.6.10",
-    "@studio-freight/lenis": "^1.0.0-dev.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

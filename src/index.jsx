@@ -35,7 +35,7 @@ export function useLenis(callback, deps = [], priority = 0) {
     return () => {
       removeCallback(callback)
     }
-  }, [lenis, callback, addCallback, removeCallback, priority, ...deps])
+  }, [lenis, callback, addCallback, removeCallback, priority, deps])
 
   return lenis
 }
@@ -126,6 +126,6 @@ ReactLenis.propTypes = {
   className: PropTypes.string,
 }
 
-ReactLenis.options = {}
+// ReactLenis.options = {}
 
 export { ReactLenis, ReactLenis as Lenis }

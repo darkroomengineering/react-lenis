@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactLenis, useLenis } from '../src/index'
+import { ReactLenis, useLenis } from '../dist/react-lenis'
 
 function ScrollableContent() {
   useLenis((lenis) => {
