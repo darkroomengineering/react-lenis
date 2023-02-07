@@ -1,8 +1,8 @@
 import React from 'react'
-import { ReactLenis, useScroll } from '../src/index'
+import { ReactLenis, useLenis } from '../src/index'
 
 function ScrollableContent() {
-  useScroll((lenis) => {
+  useLenis((lenis) => {
     console.log('Current page progress', lenis.progress)
   })
 
@@ -17,7 +17,7 @@ function ScrollableContent() {
 }
 
 function ScrollListener() {
-  useScroll(({ scroll }) => {
+  useLenis(({ scroll }) => {
     console.log('Current scroll position', scroll)
   })
 
