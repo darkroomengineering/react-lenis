@@ -1,6 +1,6 @@
 {
   "name": "@studio-freight/react-lenis",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "",
   "files": [
     "dist/**/*",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.2",
     "@studio-freight/hamo": "0.6.12",
-    "@studio-freight/lenis": "1.0.0-dev.7",
+    "@studio-freight/lenis": "1.0.0-dev.8",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard": "^17.0.0",

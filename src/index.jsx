@@ -26,8 +26,7 @@ export function useLenis(callback, deps = [], priority = 0) {
   const { lenis, addCallback, removeCallback } = useCurrentLenis()
 
   useEffect(() => {
-    if (!callback) return
-    if (!addCallback || !removeCallback || !lenis) return
+    if (!callback || !addCallback || !removeCallback || !lenis) return
 
     addCallback(callback, priority)
     callback(lenis)
@@ -42,7 +41,7 @@ export function useLenis(callback, deps = [], priority = 0) {
 
 const LenisContext = createContext()
 
-const ReactLenis = forwardRef(({ children, root = false, options = ReactLenis.options, className }, ref) => {
+const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped = false, className }, ref) => {
   const wrapper = useRef()
   const content = useRef()
 
@@ -77,11 +76,31 @@ const ReactLenis = forwardRef(({ children, root = false, options = ReactLenis.op
       lenis.destroy()
       setLenis(undefined)
     }
-  }, [root, JSON.stringify(options)])
+  }, [
+    root,
+    // JSON.stringify(
+    //   // filter out node elements from options
+    //   Object.keys(options).reduce((acc, key) => {
+    //     if (!options[key].tagName) {
+    //       acc[key] = options[key]
+    //     }
+    //     return acc
+    //   }, {})
+    // ),
+  ])
 
   useFrame((time) => {
     lenis?.raf(time)
-  }, [])
+  })
+
+  useEffect(() => {
+    if (!lenis) return
+    if (isStopped) {
+      lenis.stop()
+    } else {
+      lenis.start()
+    }
+  }, [lenis, isStopped])
 
   useEffect(() => {
     if (root && lenis) {
@@ -123,9 +142,8 @@ ReactLenis.propTypes = {
   children: PropTypes.node,
   root: PropTypes.bool,
   options: PropTypes.object,
+  isStopped: PropTypes.bool,
   className: PropTypes.string,
 }
-
-// ReactLenis.options = {}
 
 export { ReactLenis, ReactLenis as Lenis }
