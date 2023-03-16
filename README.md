@@ -71,6 +71,8 @@ The hook takes three argument:
 
 - [@studio-freight/compono](https://github.com/studio-freight/compono) Our Next.js/React component library.
 
+- [@studio-freight/satus](https://github.com/studio-freight/satus) Our starter kit.
+
 <br/>
 
 ## Authors
