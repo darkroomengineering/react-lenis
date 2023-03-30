@@ -61,14 +61,15 @@ const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped
   useImperativeHandle(ref, () => lenis, [lenis])
 
   useEffect(() => {
-    if (!root) {
-      options.wrapper = wrapper.current
-      options.content = content.current
-    }
-
     const lenis = new Lenis({
       ...options,
+      ...(!root && {
+        wrapper: wrapper.current,
+        content: content.current,
+      }),
     })
+
+    console.log('Lenis', lenis)
 
     setLenis(lenis)
 
@@ -76,18 +77,7 @@ const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped
       lenis.destroy()
       setLenis(undefined)
     }
-  }, [
-    root,
-    // JSON.stringify(
-    //   // filter out node elements from options
-    //   Object.keys(options).reduce((acc, key) => {
-    //     if (!options[key].tagName) {
-    //       acc[key] = options[key]
-    //     }
-    //     return acc
-    //   }, {})
-    // ),
-  ])
+  }, [root, JSON.stringify(options)])
 
   useFrame((time) => {
     lenis?.raf(time)

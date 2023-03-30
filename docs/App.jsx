@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactLenis, useLenis } from '../dist/react-lenis'
+import { ReactLenis, useLenis } from '../src'
 
 function ScrollableContent() {
   useLenis((lenis) => {
@@ -26,7 +26,7 @@ function ScrollListener() {
 
 function App() {
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{}}>
       <ScrollListener />
       <ScrollableContent />
     </ReactLenis>

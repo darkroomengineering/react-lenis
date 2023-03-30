@@ -72,7 +72,7 @@
   ],
   "dependencies": {
     "@studio-freight/hamo": "0.6.12",
-    "@studio-freight/lenis": "1.0.0-dev.8",
+    "@studio-freight/lenis": "latest",
     "prop-types": "^15.8.1",
     "zustand": "^4.3.6"
   },
