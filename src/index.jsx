@@ -69,8 +69,6 @@ const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped
       }),
     })
 
-    console.log('Lenis', lenis)
-
     setLenis(lenis)
 
     return () => {
