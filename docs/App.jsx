@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ReactLenis, useLenis } from '../src'
 
 function ScrollableContent() {
@@ -16,18 +16,28 @@ function ScrollableContent() {
   )
 }
 
-function ScrollListener() {
-  useLenis(({ scroll }) => {
-    console.log('Current scroll position', scroll)
-  })
-
-  return null
-}
-
 function App() {
+  // state change simulation to test deps
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((v) => v + 1)
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useLenis(
+    ({ scroll }) => {
+      console.log('Current scroll position', scroll, count)
+    },
+    [count],
+    1
+  )
+
   return (
     <ReactLenis root options={{}}>
-      <ScrollListener />
       <ScrollableContent />
     </ReactLenis>
   )

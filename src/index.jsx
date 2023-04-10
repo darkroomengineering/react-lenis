@@ -13,11 +13,13 @@ import React, {
 } from 'react'
 import { create } from 'zustand'
 
-const useStore = create(() => ({}))
+const LenisContext = createContext()
+
+const useRoot = create(() => ({}))
 
 function useCurrentLenis() {
   const local = useContext(LenisContext)
-  const root = useStore()
+  const root = useRoot()
 
   return local ?? root
 }
@@ -34,12 +36,10 @@ export function useLenis(callback, deps = [], priority = 0) {
     return () => {
       removeCallback(callback)
     }
-  }, [lenis, callback, addCallback, removeCallback, priority, deps])
+  }, [lenis, addCallback, removeCallback, ...deps, priority])
 
   return lenis
 }
-
-const LenisContext = createContext()
 
 const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped = false, className }, ref) => {
   const wrapper = useRef()
@@ -92,7 +92,7 @@ const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped
 
   useEffect(() => {
     if (root && lenis) {
-      useStore.setState({ lenis, addCallback, removeCallback })
+      useRoot.setState({ lenis, addCallback, removeCallback })
     }
   }, [root, lenis, addCallback, removeCallback])
 
