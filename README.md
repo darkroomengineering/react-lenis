@@ -28,7 +28,11 @@ If `root` is true, `<ReactLenis>` will be the root Lenis instance and all other 
 ## Usage
 
 ```js
-const Layout = () => {
+function Layout() {
+  const lenis = useLenis(({scroll}) => {
+    // called every scroll
+  })
+
   return (
     <ReactLenis root options={{ ...options }}>
       {/* Your scrollable website */}
