@@ -24,7 +24,7 @@ function useCurrentLenis() {
   return local ?? root
 }
 
-export function useLenis(callback, deps = [], priority = 0) {
+export function useLenis(callback = undefined, deps = [], priority = 0) {
   const { lenis, addCallback, removeCallback } = useCurrentLenis()
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function useLenis(callback, deps = [], priority = 0) {
     return () => {
       removeCallback(callback)
     }
-  }, [lenis, addCallback, removeCallback, ...deps, priority])
+  }, [lenis, addCallback, removeCallback, priority, ...deps])
 
   return lenis
 }
