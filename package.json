@@ -72,11 +72,7 @@
   ],
   "dependencies": {
     "@studio-freight/hamo": "0.6.12",
-<<<<<<< HEAD
-    "@studio-freight/lenis": "1.0.10",
-=======
     "@studio-freight/lenis": "^1.0.10",
->>>>>>> 275cf1a2e735423b2a42ac9c2e10286fd3e99205
     "prop-types": "^15.8.1",
     "zustand": "^4.3.7"
   },
