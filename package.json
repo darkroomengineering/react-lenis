@@ -1,6 +1,6 @@
 {
   "name": "@studio-freight/react-lenis",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "files": [
     "dist/**/*",
@@ -55,9 +55,9 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rimraf": "^4.4.1",
+    "rimraf": "^5.0.0",
     "typescript": "^5.0.4",
-    "vite": "^4.2.1",
+    "vite": "^4.3.1",
     "zustand": "^4.3.2"
   },
   "size-limit": [
@@ -72,7 +72,11 @@
   ],
   "dependencies": {
     "@studio-freight/hamo": "0.6.12",
+<<<<<<< HEAD
     "@studio-freight/lenis": "1.0.10",
+=======
+    "@studio-freight/lenis": "^1.0.10",
+>>>>>>> 275cf1a2e735423b2a42ac9c2e10286fd3e99205
     "prop-types": "^15.8.1",
     "zustand": "^4.3.7"
   },

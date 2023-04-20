@@ -25,10 +25,29 @@ If `root` is true, `<ReactLenis>` will be the root Lenis instance and all other 
 
 <br/>
 
+## Installation
+
+For npm users:
+```
+npm i @studio-freight/react-lenis
+```
+
+For yarn users:
+```
+yarn add @studio-freight/react-lenis
+```
+
+
 ## Usage
 
 ```js
-const Layout = () => {
+import { Lenis as ReactLenis, useLenis } from '@studio-freight/react-lenis'
+
+function Layout() {
+  const lenis = useLenis(({scroll}) => {
+    // called every scroll
+  })
+
   return (
     <ReactLenis root options={{ ...options }}>
       {/* Your scrollable website */}
