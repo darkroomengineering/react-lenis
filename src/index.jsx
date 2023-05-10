@@ -1,3 +1,5 @@
+'use client'
+
 import { useFrame } from '@studio-freight/hamo'
 import Lenis from '@studio-freight/lenis'
 import PropTypes from 'prop-types' // ES6
