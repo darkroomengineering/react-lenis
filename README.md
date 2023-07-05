@@ -77,23 +77,27 @@ The hook takes three argument:
 GSAP integration
 
 ```js
+function Component() {
   const lenisRef = useRef()
-
+  
   useEffect(() => {
     function update(time) {
       lenisRef.current?.raf(time * 1000)
     }
-
+  
     gsap.ticker.add(update)
-
+  
     return () => {
       gsap.ticker.remove(update)
     }
   })
-
-  <ReactLenis ref={lenisRef} autoRaf={false}>
-    { /* content */ }
-  </ReactLenis>
+  
+  return (
+    <ReactLenis ref={lenisRef} autoRaf={false}>
+      { /* content */ }
+    </ReactLenis>
+  )
+}
 ```
 
 
