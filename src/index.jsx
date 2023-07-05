@@ -43,89 +43,93 @@ export function useLenis(callback = undefined, deps = [], priority = 0) {
   return lenis
 }
 
-const ReactLenis = forwardRef(({ children, root = false, options = {}, isStopped = false, className }, ref) => {
-  const wrapper = useRef()
-  const content = useRef()
+const ReactLenis = forwardRef(
+  ({ children, root = false, options = {}, isStopped = false, autoRaf = true, rafPriority = 0, className }, ref) => {
+    const wrapper = useRef()
+    const content = useRef()
 
-  const [lenis, setLenis] = useState()
+    const [lenis, setLenis] = useState()
 
-  const callbacks = useRef([])
+    const callbacks = useRef([])
 
-  const addCallback = useCallback((callback, priority) => {
-    callbacks.current.push({ callback, priority })
-    callbacks.current.sort((a, b) => a.priority - b.priority)
-  }, [])
+    const addCallback = useCallback((callback, priority) => {
+      callbacks.current.push({ callback, priority })
+      callbacks.current.sort((a, b) => a.priority - b.priority)
+    }, [])
 
-  const removeCallback = useCallback((callback) => {
-    callbacks.current = callbacks.current.filter((cb) => cb.callback !== callback)
-  }, [])
+    const removeCallback = useCallback((callback) => {
+      callbacks.current = callbacks.current.filter((cb) => cb.callback !== callback)
+    }, [])
 
-  useImperativeHandle(ref, () => lenis, [lenis])
+    useImperativeHandle(ref, () => lenis, [lenis])
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      ...options,
-      ...(!root && {
-        wrapper: wrapper.current,
-        content: content.current,
-      }),
-    })
+    useEffect(() => {
+      const lenis = new Lenis({
+        ...options,
+        ...(!root && {
+          wrapper: wrapper.current,
+          content: content.current,
+        }),
+      })
 
-    setLenis(lenis)
+      setLenis(lenis)
 
-    return () => {
-      lenis.destroy()
-      setLenis(undefined)
-    }
-  }, [root, JSON.stringify(options)])
+      return () => {
+        lenis.destroy()
+        setLenis(undefined)
+      }
+    }, [root, JSON.stringify(options)])
 
-  useFrame((time) => {
-    lenis?.raf(time)
-  })
+    useFrame((time) => {
+      if (autoRaf) {
+        lenis?.raf(time)
+      }
+    }, rafPriority)
 
-  useEffect(() => {
-    if (!lenis) return
-    if (isStopped) {
-      lenis.stop()
-    } else {
-      lenis.start()
-    }
-  }, [lenis, isStopped])
+    useEffect(() => {
+      if (!lenis) return
+      if (isStopped) {
+        lenis.stop()
+      } else {
+        lenis.start()
+      }
+    }, [lenis, isStopped])
 
-  useEffect(() => {
-    if (root && lenis) {
-      useRoot.setState({ lenis, addCallback, removeCallback })
-    }
-  }, [root, lenis, addCallback, removeCallback])
+    useEffect(() => {
+      if (root && lenis) {
+        useRoot.setState({ lenis, addCallback, removeCallback })
+      }
+    }, [root, lenis, addCallback, removeCallback])
 
-  const onScroll = useCallback((e) => {
-    for (let i = 0; i < callbacks.current.length; i++) {
-      callbacks.current[i].callback(e)
-    }
-  }, [])
+    const onScroll = useCallback((e) => {
+      for (let i = 0; i < callbacks.current.length; i++) {
+        callbacks.current[i].callback(e)
+      }
+    }, [])
 
-  useEffect(() => {
-    if (!lenis) return
+    useEffect(() => {
+      if (!lenis) return
 
-    lenis.on('scroll', onScroll)
+      lenis.on('scroll', onScroll)
 
-    return () => {
-      lenis.off('scroll', onScroll)
-    }
-  }, [lenis, onScroll])
+      return () => {
+        lenis.off('scroll', onScroll)
+      }
+    }, [lenis, onScroll])
 
-  return (
-    <LenisContext.Provider value={{ lenis, addCallback, removeCallback }}>
-      {root ? (
-        children
-      ) : (
-        <div ref={wrapper} className={className}>
-          <div ref={content}>{children}</div>
-        </div>
-      )}
-    </LenisContext.Provider>
-  )
-})
+    return (
+      <LenisContext.Provider value={{ lenis, addCallback, removeCallback }}>
+        {root ? (
+          children
+        ) : (
+          <div ref={wrapper} className={className}>
+            <div ref={content}>{children}</div>
+          </div>
+        )}
+      </LenisContext.Provider>
+    )
+  }
+)
 ReactLenis.displayName = 'ReactLenis'
 
 ReactLenis.propTypes = {
@@ -133,6 +137,8 @@ ReactLenis.propTypes = {
   root: PropTypes.bool,
   options: PropTypes.object,
   isStopped: PropTypes.bool,
+  autoRaf: PropTypes.bool,
+  rafPriority: PropTypes.number,
   className: PropTypes.string,
 }
 

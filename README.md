@@ -1,4 +1,4 @@
-[![Bibliotheca](https://assets.studiofreight.com/bibliotheca/header.png)](https://github.com/studio-freight/bibliotheca)
+<!-- [![Bibliotheca](https://assets.studiofreight.com/bibliotheca/header.png)](https://github.com/studio-freight/bibliotheca) -->
 
 <!-- <p align="center">
   <a aria-label="Vercel logo" href="https://vercel.com">
@@ -17,11 +17,8 @@
 </p> -->
 
 ## Introduction
+react-lenis provides a `<ReactLenis>` component that creates a [Lenis](https://github.com/studio-freight/lenis) instance and provides it to its children via context. This allows you to use Lenis in your React app without worrying about passing the instance down through props. It also provides a `useLenis` hook that allows you to access the Lenis instance from any component in your app.
 
-react-lenis creates and manages an instance of the [Lenis](https://github.com/studio-freight/lenis).
-It takes in a root prop and an options object that is spread into the Lenis constructor.
-
-If `root` is true, `<ReactLenis>` will be the root Lenis instance and all other `<ReactLenis>` components in the app will get the instance from the context. If `root` is false, the component will create a new Lenis instance and provide it via the context. It's recommended to only have one `<ReactLenis root>` component in your app.
 
 <br/>
 
@@ -41,36 +38,63 @@ yarn add @studio-freight/react-lenis
 ## Usage
 
 ```js
-import { Lenis as ReactLenis, useLenis } from '@studio-freight/react-lenis'
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis'
 
 function Layout() {
-  const lenis = useLenis(({scroll}) => {
+  const lenis = useLenis(({ scroll }) => {
     // called every scroll
   })
 
   return (
-    <ReactLenis root options={{ ...options }}>
-      {/* Your scrollable website */}
+    <ReactLenis root>
+      { /* content */ }
     </ReactLenis>
   )
 }
 ```
 <br/>
 
-## Options
-The `options` object is passed directly to the Lenis instance, check [their readme for reference](https://github.com/studio-freight/lenis#instance-settings)
+## Props
+- `options`: [Lenis options](https://github.com/studio-freight/lenis#instance-settings).
+- `root`: Lenis will be instanciate using `<html>` scroll. Default: `false`.
+- `autoRaf`: if `false`, `lenis.raf` needs to be called manually. Default: `true`.
+- `rAFpriority`: [Tempus](https://github.com/studio-freight/tempus#readme) execution priority. Default: `0`.
 
 <br/>
 
-## Extras
+## Hooks
 Once the Lenis context is set (components mounted inside `<ReactLenis>`) you can use these handy hooks:
 
 `useLenis` is a hook that returns the Lenis instance
 
 The hook takes three argument:
-- callback: The function to be called whenever a scroll event is emitted
-- deps array: Trigger callback on change
-- priority: Manage callback execution order
+- `callback`: The function to be called whenever a scroll event is emitted
+- `deps`: Trigger callback on change
+- `priority`: Manage callback execution order
+
+## Examples
+
+GSAP integration
+
+```js
+  const lenisRef = useRef()
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.raf(time * 1000)
+    }
+
+    gsap.ticker.add(update)
+
+    return () => {
+      gsap.ticker.remove(update)
+    }
+  })
+
+  <ReactLenis ref={lenisRef} autoRaf={false}>
+    { /* content */ }
+  </ReactLenis>
+```
 
 
 <br/>
@@ -89,7 +113,6 @@ The hook takes three argument:
 ## @studio-freight/react-lenis in use
 
 - [@studio-freight/compono](https://github.com/studio-freight/compono) Our Next.js/React component library.
-
 - [@studio-freight/satus](https://github.com/studio-freight/satus) Our starter kit.
 
 <br/>

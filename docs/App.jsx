@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ReactLenis, useLenis } from '../src'
+import { useFrame } from '@studio-freight/hamo'
 
 function ScrollableContent() {
   useLenis((lenis) => {
@@ -36,8 +37,14 @@ function App() {
     1
   )
 
+  const lenisRef = useRef()
+
+  useFrame((time) => {
+    lenisRef.current.raf(time)
+  })
+
   return (
-    <ReactLenis root options={{}}>
+    <ReactLenis ref={lenisRef} root options={{}} autoRaf={false}>
       <ScrollableContent />
     </ReactLenis>
   )
