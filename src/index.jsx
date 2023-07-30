@@ -26,7 +26,7 @@ function useCurrentLenis() {
   return local ?? root
 }
 
-export function useLenis(callback = undefined, deps = [], priority = 0) {
+export function useLenis(callback, deps = [], priority = 0) {
   const { lenis, addCallback, removeCallback } = useCurrentLenis()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function useLenis(callback = undefined, deps = [], priority = 0) {
 }
 
 const ReactLenis = forwardRef(
-  ({ children, root = false, options = {}, isStopped = false, autoRaf = true, rafPriority = 0, className }, ref) => {
+  ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, className }, ref) => {
     const wrapper = useRef()
     const content = useRef()
 
@@ -87,15 +87,6 @@ const ReactLenis = forwardRef(
     }, rafPriority)
 
     useEffect(() => {
-      if (!lenis) return
-      if (isStopped) {
-        lenis.stop()
-      } else {
-        lenis.start()
-      }
-    }, [lenis, isStopped])
-
-    useEffect(() => {
       if (root && lenis) {
         useRoot.setState({ lenis, addCallback, removeCallback })
       }
@@ -128,7 +119,7 @@ const ReactLenis = forwardRef(
         )}
       </LenisContext.Provider>
     )
-  }
+  },
 )
 ReactLenis.displayName = 'ReactLenis'
 
@@ -136,7 +127,6 @@ ReactLenis.propTypes = {
   children: PropTypes.node,
   root: PropTypes.bool,
   options: PropTypes.object,
-  isStopped: PropTypes.bool,
   autoRaf: PropTypes.bool,
   rafPriority: PropTypes.number,
   className: PropTypes.string,
