@@ -13,6 +13,7 @@
   "module": "dist/react-lenis.mjs",
   "types": "dist/types/index.d.ts",
   "exports": {
+    "types": "./dist/types/index.d.ts",
     "require": "./dist/react-lenis.js",
     "default": "./dist/react-lenis.modern.mjs"
   },
