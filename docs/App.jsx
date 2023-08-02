@@ -34,7 +34,7 @@ function App() {
       console.log('Current scroll position', scroll, count)
     },
     [count],
-    1
+    1,
   )
 
   const lenisRef = useRef()

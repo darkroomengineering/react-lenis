@@ -26,6 +26,13 @@ function useCurrentLenis() {
   return local ?? root
 }
 
+/**
+ * @param {function=} [callback] Callback to be called on scroll
+ * @param {Array=} [deps=[]] Dependencies for callback
+ * @param {number=} [priority=0] Priority of callback (lower priority callbacks are called first)
+ *
+ * @returns Lenis instance
+ */
 export function useLenis(callback, deps = [], priority = 0) {
   const { lenis, addCallback, removeCallback } = useCurrentLenis()
 
@@ -43,8 +50,14 @@ export function useLenis(callback, deps = [], priority = 0) {
   return lenis
 }
 
+/**
+ * @param {boolean=} [root] Whether Lenis will be initialized on document.documentElement
+ * @param {Object=} [options={}] Lenis options
+ * @param {boolean=} [autoRaf=true] Whether to call Lenis.raf automatically on every frame
+ * @param {number=} [rafPriority=0] Priority of Lenis.raf call (lower priority callbacks are called first)
+ */
 const ReactLenis = forwardRef(
-  ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, className }, ref) => {
+  ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, ...props }, ref) => {
     const wrapper = useRef()
     const content = useRef()
 
@@ -113,7 +126,7 @@ const ReactLenis = forwardRef(
         {root ? (
           children
         ) : (
-          <div ref={wrapper} className={className}>
+          <div ref={wrapper} {...props}>
             <div ref={content}>{children}</div>
           </div>
         )}
@@ -129,7 +142,6 @@ ReactLenis.propTypes = {
   options: PropTypes.object,
   autoRaf: PropTypes.bool,
   rafPriority: PropTypes.number,
-  className: PropTypes.string,
 }
 
 export { ReactLenis, ReactLenis as Lenis }
