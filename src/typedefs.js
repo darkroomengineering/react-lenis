@@ -20,7 +20,7 @@
  */
 
 /** 
- * @typedef {Object} ScrollToOptions
+ * @typedef {Object} ScrollToParams
  * @param {number} offset equivalent to scroll-padding-top
  * @param {number} lerp animation lerp intensity
  * @param {number} duration animation duration (in seconds)
