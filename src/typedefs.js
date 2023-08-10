@@ -5,13 +5,8 @@
  */
 
 /**
- * @typedef {Object} EventParams
- * TODO: this
- */
-
-/**
  * @callback CallbackFunction
- * @param {EventParams} [eventParams]
+ * @param {object} [eventParams]
  */
 
 /**
