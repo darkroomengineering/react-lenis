@@ -149,7 +149,7 @@ export { ReactLenis, ReactLenis as Lenis }
 /**
  * @callback EasingFunction
  * @param {number} rawValue
- * @returns {number} outputValue
+ * @returns {number} eased output value
  */
 
 /**
@@ -207,14 +207,14 @@ export { ReactLenis, ReactLenis as Lenis }
 
 /**
  * @typedef {Object} Dimensions
- * @property {(HTMLElement|Window)} wrapper interpolation rate
- * @property {HTMLElement} content interpolation rate
+ * @property {(HTMLElement|Window)} wrapper Wrapper lenis is applied to
+ * @property {HTMLElement} content 
  * @property {ResizeObserver} contentResizeObserver
- * @property {function():void} resize 
+ * @property {function():void} resize
  * @property {function():void} onContentResize 
  * @property {function():void} onWrapperResize 
- * @property {number} width
- * @property {number} height
+ * @property {number} width viewport width
+ * @property {number} height viewport height
  * @property {number} scrollWidth
  * @property {number} scrollHeight
  */
