@@ -170,7 +170,7 @@ export { ReactLenis, ReactLenis as Lenis }
 /** 
  * @typedef {Object} ScrollToParams
  * @property {number} [offset] equivalent to scroll-padding-top
- * @param {number} lerp animation lerp intensity
+ * @property {number} [lerp] animation lerp intensity
  * @param {number} duration animation duration (in seconds)
  * @param {EasingFunction} easing animation easing
  * @param {boolean} immediate ignore duration, easing and lerp
