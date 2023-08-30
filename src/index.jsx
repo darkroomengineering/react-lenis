@@ -182,7 +182,7 @@ export { ReactLenis, ReactLenis as Lenis }
 /**
  * @callback ScrollTo
  * @param {number|string|HTMLElement} target
- * @param {ScrollToOptions} options
+ * @param {ScrollToParams} [options]
  */
 
 /**
