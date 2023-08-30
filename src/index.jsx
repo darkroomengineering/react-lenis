@@ -174,7 +174,7 @@ export { ReactLenis, ReactLenis as Lenis }
  * @property {number} [duration] animation duration (in seconds)
  * @param {EasingFunction} easing animation easing
  * @property {boolean} [immediate] ignore duration, easing and lerp
- * @param {boolean} lock whether or not to prevent the user from scrolling until the target is reached
+ * @property {boolean} [lock] whether or not to prevent the user from scrolling until the target is reached
  * @property {boolean} [force] reach target even if instance is stopped
  * @property {CallbackFunction} [onComplete] called when the target is reached
  */
