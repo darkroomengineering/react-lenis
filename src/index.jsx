@@ -15,7 +15,7 @@ import React, {
 } from 'react'
 import { create } from 'zustand'
 
-const LenisContext = createContext()
+export const LenisContext = createContext()
 
 const useRoot = create(() => ({}))
 

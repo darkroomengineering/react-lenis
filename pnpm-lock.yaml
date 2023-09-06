@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@size-limit/preset-small-lib': ^8.2.6
   '@studio-freight/hamo': ^0.6.19
-  '@studio-freight/lenis': ^1.0.19
+  '@studio-freight/lenis': ^1.0.22
   eslint: ^8.44.0
   eslint-config-prettier: ^8.8.0
   eslint-config-standard: ^17.1.0
@@ -25,7 +25,7 @@ specifiers:
 
 dependencies:
   '@studio-freight/hamo': 0.6.19_biqbaboplfbrettd7655fr4n2y
-  '@studio-freight/lenis': 1.0.19
+  '@studio-freight/lenis': 1.0.22
   prop-types: 15.8.1
   zustand: 4.3.9_react@18.2.0
 
@@ -1800,8 +1800,8 @@ packages:
       throttle-debounce: 5.0.0
     dev: false
 
-  /@studio-freight/lenis/1.0.19:
-    resolution: {integrity: sha512-0DZdjDaJqhYVxzcbj6Dpv/BHS/RLc4f6XYu/n0t0fUKatuvO5vtXW4gW4GHgJPiPIpamct7bg8hpihbjZ6fqpw==}
+  /@studio-freight/lenis/1.0.22:
+    resolution: {integrity: sha512-CU4VT2rZjrpp4bSqpIYe+qA4vK0yZeIl2lM0tcU5mX5k03smhCAAiDiLjgXJ1mrU9za6cU0O8C69zTOVbSBpwg==}
     dev: false
 
   /@studio-freight/tempus/0.0.38:
