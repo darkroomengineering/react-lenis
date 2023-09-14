@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ReactLenis, useLenis } from '../src'
 import { useFrame } from '@studio-freight/hamo'
+import cn from 'clsx'
 
 function ScrollableContent() {
   useLenis((lenis) => {
@@ -44,7 +45,7 @@ function App() {
   })
 
   return (
-    <ReactLenis ref={lenisRef} root options={{}} autoRaf={false}>
+    <ReactLenis ref={lenisRef} className={cn(count, 'etst')} options={{}} autoRaf={false}>
       <ScrollableContent />
     </ReactLenis>
   )

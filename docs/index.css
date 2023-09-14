@@ -24,3 +24,8 @@ p {
   margin: 0;
   font-size: 10rem;
 }
+
+.lenis {
+  height: 100vh;
+  overflow-y: auto;
+}

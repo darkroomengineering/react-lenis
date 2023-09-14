@@ -57,7 +57,7 @@ export function useLenis(callback, deps = [], priority = 0) {
  * @param {number=} [rafPriority=0] Priority of Lenis.raf call (lower priority callbacks are called first)
  */
 const ReactLenis = forwardRef(
-  ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, ...props }, ref) => {
+  ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, className, ...props }, ref) => {
     const wrapper = useRef()
     const content = useRef()
 
@@ -120,6 +120,19 @@ const ReactLenis = forwardRef(
         lenis.off('scroll', onScroll)
       }
     }, [lenis, onScroll])
+
+    // prevent lenis classes from being removed by react className
+    useEffect(() => {
+      if (!className) return
+
+      className = String(className).split(' ')
+
+      wrapper.current?.classList.add(...className)
+
+      return () => {
+        wrapper.current?.classList.remove(...className)
+      }
+    }, [className])
 
     return (
       <LenisContext.Provider value={{ lenis, addCallback, removeCallback }}>
