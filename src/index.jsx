@@ -121,25 +121,18 @@ const ReactLenis = forwardRef(
       }
     }, [lenis, onScroll])
 
-    // prevent lenis classes from being removed by react className
+    const [currentClassName, setCurrentClassName] = useState(className)
+
     useEffect(() => {
-      if (!className) return
-
-      className = String(className).split(' ')
-
-      wrapper.current?.classList.add(...className)
-
-      return () => {
-        wrapper.current?.classList.remove(...className)
-      }
-    }, [className])
+      setCurrentClassName(`${lenis?.className || ''} ${className}`)
+    }, [lenis, className])
 
     return (
       <LenisContext.Provider value={{ lenis, addCallback, removeCallback }}>
         {root ? (
           children
         ) : (
-          <div ref={wrapper} {...props}>
+          <div ref={wrapper} className={currentClassName} {...props}>
             <div ref={content}>{children}</div>
           </div>
         )}

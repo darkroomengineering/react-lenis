@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((v) => v + 1)
-    }, 1000)
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [])
@@ -45,7 +45,7 @@ function App() {
   })
 
   return (
-    <ReactLenis ref={lenisRef} className={cn(count, 'etst')} options={{}} autoRaf={false}>
+    <ReactLenis ref={lenisRef} className={cn('scroller', count)} options={{}} autoRaf={false}>
       <ScrollableContent />
     </ReactLenis>
   )
