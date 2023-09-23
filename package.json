@@ -22,9 +22,9 @@
     "clean": "npm-run-all --parallel clean:bundled clean:dist",
     "clean:bundled": "rimraf bundled",
     "clean:dist": "rimraf dist",
-    "prepublishOnly": "npm version patch",
+    "version:patch": "npm version patch",
+    "prepublishOnly": "npm-run-all version:patch build",
     "postpublish": "git push --follow-tags",
-    "preversion": "npm run build",
     "build": "npm-run-all --parallel clean build:dist build:types",
     "build:types": "tsc --target esnext --allowJs -d --emitDeclarationOnly --declarationDir ./dist/types --removeComments ./src/index.jsx",
     "build:dist": "microbundle build -i src/index.jsx --o ./dist --jsx React.createElement"
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^9.0.0",
     "clsx": "^2.0.0",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.1",
