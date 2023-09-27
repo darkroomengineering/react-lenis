@@ -1,6 +1,6 @@
 {
   "name": "@studio-freight/react-lenis",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "a react wrapper for lenis smooth scroll library",
   "files": [
     "dist/**/*",
