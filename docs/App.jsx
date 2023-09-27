@@ -5,7 +5,8 @@ import cn from 'clsx'
 
 function ScrollableContent() {
   useLenis((lenis) => {
-    console.log('Current page progress', lenis.progress)
+    // console.log('Current page progress', lenis.progress)
+    console.log(lenis.scroll, lenis.limit)
   })
 
   return (

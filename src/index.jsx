@@ -14,6 +14,7 @@ import React, {
   useState,
 } from 'react'
 import { create } from 'zustand'
+import cn from 'clsx'
 
 export const LenisContext = createContext()
 
@@ -112,27 +113,33 @@ const ReactLenis = forwardRef(
     }, [])
 
     useEffect(() => {
-      if (!lenis) return
-
-      lenis.on('scroll', onScroll)
+      lenis?.on('scroll', onScroll)
 
       return () => {
-        lenis.off('scroll', onScroll)
+        lenis?.off('scroll', onScroll)
       }
     }, [lenis, onScroll])
 
-    const [currentClassName, setCurrentClassName] = useState(className)
+    const onClassNameChange = useCallback(() => {
+      wrapper.current.className = cn(lenis?.className, className)
+    }, [lenis, className])
 
     useEffect(() => {
-      setCurrentClassName(`${lenis?.className || ''} ${className}`)
-    }, [lenis, className])
+      onClassNameChange()
+
+      lenis?.on('className change', onClassNameChange)
+
+      return () => {
+        lenis?.off('className change', onClassNameChange)
+      }
+    }, [lenis, onClassNameChange])
 
     return (
       <LenisContext.Provider value={{ lenis, addCallback, removeCallback }}>
         {root ? (
           children
         ) : (
-          <div ref={wrapper} className={currentClassName} {...props}>
+          <div ref={wrapper} {...props}>
             <div ref={content}>{children}</div>
           </div>
         )}

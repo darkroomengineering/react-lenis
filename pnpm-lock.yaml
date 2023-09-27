@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@size-limit/preset-small-lib': ^9.0.0
   '@studio-freight/hamo': ^0.6.19
-  '@studio-freight/lenis': ^1.0.23
+  '@studio-freight/lenis': ^1.0.24
   clsx: ^2.0.0
   eslint: ^8.49.0
   eslint-config-prettier: ^9.0.0
@@ -26,13 +26,13 @@ specifiers:
 
 dependencies:
   '@studio-freight/hamo': 0.6.19_biqbaboplfbrettd7655fr4n2y
-  '@studio-freight/lenis': 1.0.23
+  '@studio-freight/lenis': 1.0.24
+  clsx: 2.0.0
   prop-types: 15.8.1
   zustand: 4.4.1_react@18.2.0
 
 devDependencies:
   '@size-limit/preset-small-lib': 9.0.0
-  clsx: 2.0.0
   eslint: 8.49.0
   eslint-config-prettier: 9.0.0_eslint@8.49.0
   eslint-config-standard: 17.1.0_nkk77xwgseklebqz36s4lzvka4
@@ -2005,8 +2005,8 @@ packages:
       throttle-debounce: 5.0.0
     dev: false
 
-  /@studio-freight/lenis/1.0.23:
-    resolution: {integrity: sha512-eV/mGeHzP3D6eEH762CYBOQUMScy6ye9mhmT+GLMx10WaP7tB9OsX4kBBF4WeLgvi5ot4M3XaN2dgoLblNygRQ==}
+  /@studio-freight/lenis/1.0.24:
+    resolution: {integrity: sha512-lOd+vy62k/ekOEU0PLXjHIpobVKBYeBEiy0T3x6MrvgG5ohbP3+iVRZAUAdw94Sv2jk6AgowwJqifB9pC/qc9Q==}
     dev: false
 
   /@studio-freight/tempus/0.0.38:
@@ -2447,7 +2447,7 @@ packages:
   /clsx/2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
-    dev: true
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}

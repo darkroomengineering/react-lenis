@@ -45,7 +45,6 @@
   "homepage": "https://github.com/studio-freight/react-lenis#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^9.0.0",
-    "clsx": "^2.0.0",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
@@ -76,7 +75,8 @@
   ],
   "dependencies": {
     "@studio-freight/hamo": "^0.6.19",
-    "@studio-freight/lenis": "^1.0.23",
+    "@studio-freight/lenis": "^1.0.24",
+    "clsx": "^2.0.0",
     "prop-types": "^15.8.1",
     "zustand": "^4.4.1"
   },
