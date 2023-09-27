@@ -121,7 +121,7 @@ const ReactLenis = forwardRef(
     }, [lenis, onScroll])
 
     const onClassNameChange = useCallback(() => {
-      wrapper.current.className = cn(lenis?.className, className)
+      if (wrapper.current) wrapper.current.className = cn(lenis?.className, className)
     }, [lenis, className])
 
     useEffect(() => {
@@ -180,7 +180,7 @@ export { ReactLenis, ReactLenis as Lenis }
  * @param {number} time
  */
 
-/** 
+/**
  * @typedef {Object} ScrollToParams
  * @property {number} [offset] equivalent to scroll-padding-top
  * @property {number} [lerp] animation lerp intensity
@@ -201,9 +201,9 @@ export { ReactLenis, ReactLenis as Lenis }
 /**
  * @typedef {Object} ReactLenisOptions
  * @property {(HTMLElement|Window)} [wrapper=window] interpolation rate
- * @property {HTMLElement=} [content=document.documentElement] 
- * @property {(HTMLElement|Window)} [wheelEventsTarget=wrapper] 
- * @property {number=} [lerp=0.1] 
+ * @property {HTMLElement=} [content=document.documentElement]
+ * @property {(HTMLElement|Window)} [wheelEventsTarget=wrapper]
+ * @property {number=} [lerp=0.1]
  * @property {number=} [duration=1.2] scroll duration
  * @property {EasingFunction=} [easing=(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))] // easing function to apply to scroll values
  * @property {string=} [orientation='vertical'] scroll orientation
@@ -221,11 +221,11 @@ export { ReactLenis, ReactLenis as Lenis }
 /**
  * @typedef {Object} Dimensions
  * @property {(HTMLElement|Window)} wrapper Wrapper lenis is applied to
- * @property {HTMLElement} content 
+ * @property {HTMLElement} content
  * @property {ResizeObserver} contentResizeObserver
  * @property {function():void} resize
- * @property {function():void} onContentResize 
- * @property {function():void} onWrapperResize 
+ * @property {function():void} onContentResize
+ * @property {function():void} onWrapperResize
  * @property {number} width viewport width
  * @property {number} height viewport height
  * @property {number} scrollWidth
@@ -265,7 +265,7 @@ export { ReactLenis, ReactLenis as Lenis }
  * @property {function():void} stop Pauses the scroll
  * @property {function():void} start Resumes the scroll
  * @property {function():void} resize Compute internal sizes, has to be used if autoResize option is false
- * @property {function():void} destroy Destroys the instance and removes all events	
+ * @property {function():void} destroy Destroys the instance and removes all events
  * @property {EventHandler} on Lenis event listener
  * @property {ScrollTo} scrollTo Scroll to target
  * @property {RAF} raf Must be called every frame for internal usage
