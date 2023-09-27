@@ -167,7 +167,7 @@ export { ReactLenis, ReactLenis as Lenis }
 
 /**
  * @callback CallbackFunction
- * @param {object} [eventParams]
+ * @param {LenisInstance} instance
  */
 
 /**
