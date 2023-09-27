@@ -139,7 +139,7 @@ const ReactLenis = forwardRef(
         {root ? (
           children
         ) : (
-          <div ref={wrapper} {...props}>
+          <div ref={wrapper} className={cn(lenis?.className, className)} {...props}>
             <div ref={content}>{children}</div>
           </div>
         )}
