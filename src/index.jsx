@@ -56,11 +56,12 @@ export function useLenis(callback, deps = [], priority = 0) {
  * @param {ReactLenisOptions} [options={}] Lenis options {@link ReactLenisOptions}
  * @param {boolean=} [autoRaf=true] Whether to call Lenis.raf automatically on every frame
  * @param {number=} [rafPriority=0] Priority of Lenis.raf call (lower priority callbacks are called first)
+ * @param {string=} [className] Class name to be applied to the wrapper
  */
 const ReactLenis = forwardRef(
   ({ children, root = false, options = {}, autoRaf = true, rafPriority = 0, className, ...props }, ref) => {
-    const wrapper = useRef()
-    const content = useRef()
+    const wrapperRef = useRef()
+    const contentRef = useRef()
 
     const [lenis, setLenis] = useState()
 
@@ -81,8 +82,8 @@ const ReactLenis = forwardRef(
       const lenis = new Lenis({
         ...options,
         ...(!root && {
-          wrapper: wrapper.current,
-          content: content.current,
+          wrapper: wrapperRef.current,
+          content: contentRef.current,
         }),
       })
 
@@ -121,7 +122,7 @@ const ReactLenis = forwardRef(
     }, [lenis, onScroll])
 
     const onClassNameChange = useCallback(() => {
-      if (wrapper.current) wrapper.current.className = cn(lenis?.className, className)
+      if (wrapperRef.current) wrapperRef.current.className = cn(lenis?.className, className)
     }, [lenis, className])
 
     useEffect(() => {
@@ -139,8 +140,8 @@ const ReactLenis = forwardRef(
         {root ? (
           children
         ) : (
-          <div ref={wrapper} className={cn(lenis?.className, className)} {...props}>
-            <div ref={content}>{children}</div>
+          <div ref={wrapperRef} className={cn(lenis?.className, className)} {...props}>
+            <div ref={contentRef}>{children}</div>
           </div>
         )}
       </LenisContext.Provider>
@@ -155,6 +156,7 @@ ReactLenis.propTypes = {
   options: PropTypes.object,
   autoRaf: PropTypes.bool,
   rafPriority: PropTypes.number,
+  className: PropTypes.string,
 }
 
 export { ReactLenis, ReactLenis as Lenis }
@@ -208,7 +210,7 @@ export { ReactLenis, ReactLenis as Lenis }
  * @property {EasingFunction=} [easing=(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))] // easing function to apply to scroll values
  * @property {string=} [orientation='vertical'] scroll orientation
  * @property {string=} [gestureOrientation='vertical']
- * @property {boolean=} [smoothWheel=false]
+ * @property {boolean=} [smoothWheel=true]
  * @property {boolean=} [smoothTouch=false]
  * @property {boolean=} [syncTouch=false]
  * @property {number=} [syncTouchLerp=0.1]
