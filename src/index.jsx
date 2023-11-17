@@ -169,7 +169,7 @@ export { ReactLenis, ReactLenis as Lenis }
 
 /**
  * @callback CallbackFunction
- * @param {object} [eventParams]
+ * @param {LenisInstance} instance
  */
 
 /**
@@ -185,7 +185,7 @@ export { ReactLenis, ReactLenis as Lenis }
 /**
  * @typedef {Object} ScrollToParams
  * @property {number} [offset] equivalent to scroll-padding-top
- * @property {number} [lerp] animation lerp intensity
+ * @property {number} [lerp] animation interpolation rate
  * @property {number} [duration] animation duration (in seconds)
  * @property {EasingFunction} [easing] animation easing
  * @property {boolean} [immediate] ignore duration, easing and lerp
@@ -205,7 +205,7 @@ export { ReactLenis, ReactLenis as Lenis }
  * @property {(HTMLElement|Window)} [wrapper=window] interpolation rate
  * @property {HTMLElement=} [content=document.documentElement]
  * @property {(HTMLElement|Window)} [wheelEventsTarget=wrapper]
- * @property {number=} [lerp=0.1]
+ * @property {number=} [lerp=0.1] interpolation rate
  * @property {number=} [duration=1.2] scroll duration
  * @property {EasingFunction=} [easing=(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))] // easing function to apply to scroll values
  * @property {string=} [orientation='vertical'] scroll orientation
