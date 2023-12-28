@@ -16,6 +16,8 @@
   </a>
 </p> -->
 
+# React-Lenis is now part of [Lenis monorepo](https://github.com/studio-freight/lenis/tree/main/packages/react-lenis)!
+
 ## Introduction
 react-lenis provides a `<ReactLenis>` component that creates a [Lenis](https://github.com/studio-freight/lenis) instance and provides it to its children via context. This allows you to use Lenis in your React app without worrying about passing the instance down through props. It also provides a `useLenis` hook that allows you to access the Lenis instance from any component in your app.
 
